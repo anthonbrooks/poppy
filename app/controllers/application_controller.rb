@@ -15,4 +15,12 @@ class ApplicationController < Sinatra::Base
   get '/new_review' do
     erb :new_review
   end
+
+  post '/review' do
+    @title = params[:title]
+    @director = params[:director]
+    @fav_character = params[:fav_character]
+    @description = params[:description]
+    erb :review
+  end
 end

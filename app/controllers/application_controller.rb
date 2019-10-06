@@ -22,6 +22,7 @@ class ApplicationController < Sinatra::Base
     @director = params[:director]
     @fav_character = params[:fav_character]
     @description = params[:description]
+    @rating = params[:rating]
     erb :review
   end
 end

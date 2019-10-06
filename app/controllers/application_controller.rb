@@ -2,6 +2,7 @@
 
 require './config/environment'
 
+# routes and configurations
 class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'

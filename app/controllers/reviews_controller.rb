@@ -24,7 +24,16 @@ class ReviewsController < ApplicationController
     end
   end 
 
+  get 'reviews/:id' do
+    @review = Review.find_by(id: params[:id])
+    if @review
+      erb :review
+    else
+      redirect '/reviews'
+    end
+  end
+  
   get '/reviews' do
-    'All Reviews'
+    erb :reviews
   end
 end

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191007164959) do
+ActiveRecord::Schema.define(version: 20191007212517) do
+
+  create_table "reviews", force: :cascade do |t|
+    t.string  "title"
+    t.string  "director"
+    t.string  "fav_character"
+    t.string  "description"
+    t.integer "rating"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

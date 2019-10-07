@@ -19,10 +19,6 @@ class ApplicationController < Sinatra::Base
     erb :'users/home'
   end
   
-  get '/registrations/signup' do
-    erb :'registrations/signup'
-  end
-
   helpers do
     def logged_in
       !!session[:user_id]

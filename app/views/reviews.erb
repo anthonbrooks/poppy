@@ -1,0 +1,5 @@
+<ul>
+    <% Review.all.each do |review| %>
+            <li><a href="reviews/<% review.id %>"><%= review.title %></a></li>
+    <% end %>
+</ul>

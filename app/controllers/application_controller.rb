@@ -8,12 +8,17 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
+    set :session_secret, 'password_secret'
   end
 
   get '/' do
     erb :home
   end
 
+  get 'users/home' do
+    erb :'users/home'
+  end
+  
   get '/new_review' do
     erb :new_review
   end
@@ -28,10 +33,11 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sessions' do
-    @user = User.find_by(email: params[:email], password: params[:password])
-    if @user
+    @user = User.find_by(email: params[:email])
+    #binding.pry
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect :users/home
+      redirect :'users/home'
     else
       redirect :/
     end
@@ -42,9 +48,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do
-    @user = User.new(name: params['name'], email: params['email'], password: params['password'])
-    @user.save
-    session[:user_id] = @user.id
-    redirect :'users/home'
+    @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+    if @user.save
+      redirect '/'
+    else
+      redirect '/registrations/signup'
+    end
+    #@user.save
+    #session[:user_id] = @user.id
+    #redirect :'users/home'
   end
 end

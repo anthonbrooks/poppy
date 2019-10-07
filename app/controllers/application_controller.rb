@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :welcome
+    erb :home
   end
 
   get '/new_review' do

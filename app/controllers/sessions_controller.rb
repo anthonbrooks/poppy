@@ -1,4 +1,6 @@
-class SessionsController < ApplicationController  
+# frozen_string_literal: true
+
+class SessionsController < ApplicationController
   post '/sessions' do
     login
     redirect '/reviews'

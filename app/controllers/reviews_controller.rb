@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   get '/new_review' do
     if !logged_in
@@ -22,7 +24,7 @@ class ReviewsController < ApplicationController
     else
       'edit post form'
     end
-  end 
+  end
 
   get 'reviews/:id' do
     @review = Review.find_by(id: params[:id])
@@ -32,7 +34,7 @@ class ReviewsController < ApplicationController
       redirect '/reviews'
     end
   end
-  
+
   get '/reviews' do
     erb :reviews
   end

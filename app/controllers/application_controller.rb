@@ -15,16 +15,19 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
-  get 'users/home' do
+  get '/users/home' do
+    @user = User.find_by(id: session[:user_id])
     erb :'users/home'
   end
 
   helpers do
     def logged_in
-      !!session[:user_id]
+      !!current_user
     end
 
-    def current_user; end
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
 
     def signup
       @user = User.new(name: params[:name], email: params[:email], password: params[:password])
@@ -34,9 +37,7 @@ class ApplicationController < Sinatra::Base
 
     def login
       @user = User.find_by(email: params[:email])
-      if # frozen_string_literal: true
-# routes and configurations
-@user&.authenticate(params[:password])
+      if @user&.authenticate(params[:password])
         session[:user_id] = @user.id
       else
         redirect '/'

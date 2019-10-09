@@ -4,4 +4,7 @@
     <h3>My favorite character: <%= @fav_character %></h3>
     <h3>Plot: <%= @description %></h3>
     <h3>My rating: <%= @rating %>/5</h3>
+    <div id='poster'>
+    	 <p>Review by:</p><h4><%= @review.user.name %></h4>
+    </div>
 </body>

@@ -21,6 +21,7 @@ class ApplicationController < Sinatra::Base
 
   get '/users/home' do
     @user = User.find_by(id: session[:user_id])
+    @review = Review.find_by(user_id: @user.id)
     erb :'users/home'
   end
 

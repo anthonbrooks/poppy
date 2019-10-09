@@ -5,20 +5,20 @@
     <body>
       <h1>Write a Review</h1>
       <form method='POST' action='/reviews/review'>
-	<label><h4>Title: </h4></label>
-	<input type='text' name='title'/>
+	<label for='title'><h4>Title: </h4></label>
+	<input type='text' id='title' name='title'/>
 	<br/>
-	<label><h4>Director: </h4></label>
-	<input type='text' name='director'/>
+	<label for='director'><h4>Director: </h4></label>
+	<input type='text' id='director' name='director'/>
 	<br/>
-	<label><h4>Favorite Character: </h4></label>
-	<input type='text' name='fav_character'/>
+	<label for='fav_character'><h4>Favorite Character: </h4></label>
+	<input type='text' id='fav_character' name='fav_character'/>
 	<br/>
-	<label><h4>Description: </h4></label>
-	<textarea rows='5' columns='50' name='description'></textarea>
+	<label for='description'><h4>Description: </h4></label>
+	<textarea rows='5' columns='50' id='description' name='description'></textarea>
 	<br/>
-	<label><h4>Rating: </h4></label>
-	<input type='text' name='rating'/>
+	<label for='rating'><h4>Rating: </h4></label>
+	<input type='text' id='rating' name='rating'/><p>/5</p>
 	<input type='submit' value='Submit'/>
       </form>
     </body>

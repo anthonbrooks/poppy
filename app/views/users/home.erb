@@ -3,7 +3,10 @@
      x link to create review
      x link to all reviews
      x logout link	  -->
-
+<h4>Review some of your own reviews:</h4>
+<ul>
+<%= Review.find_by(user_id: @user.id).title %>
+</ul>
 <p><a href='/reviews'>View all reviews</a></p>
 <p><a href='/reviews/new'>Leave a review</a></p>
 <h5 style='text-align: center'><a href='/logout'>Logout of Poppy</a></h5>

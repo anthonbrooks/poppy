@@ -31,7 +31,8 @@ class ReviewsController < ApplicationController
     if !logged_in
       redirect '/'
     else
-      if review = current_user.reviews.find_by(params[:id])
+      review = current_user.reviews.find_by(params[:id])
+      if review
         "An edit post form #{current_user.id} is editing #{review.id}"
       else
         redirect '/reviews'

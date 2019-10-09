@@ -118,3 +118,7 @@
     display: flex;
     flex-flow: row wrap;
 }
+
+.home-links {
+    text-align: center;
+}

@@ -3,7 +3,7 @@
 class SessionsController < ApplicationController
   post '/sessions' do
     login
-    redirect '/reviews'
+    redirect '/users/home'
   end
 
   get '/logout' do

@@ -3,9 +3,9 @@
     <body>
         <h3>Hi, <%= @user.name %>. What would you like to do? </h3>
 	<h4>View and edit your latest review:</h4>
-	<a href='/reviews/<%= @review.id %>'><%= @review.title %></a>
-       	<p><a href='/reviews'>View all reviews</a></p>
-      	<p><a href='/reviews/new'>Leave a review</a></p>
-      	<h5 style='text-align: center'><a href='/logout'>Logout of Poppy</a></h5>
+	<a href='/reviews/<%= @review.id %>'><%= @review.title %></a>    <a href='/reviews/<%= @review.id %>/edit'>edit</a>    <a href='reviews/<%= @review.id %>/delete'>delete</a>
+       	<h5 class='home-links'><a href='/reviews'>View all reviews</a></h5>
+      	<h5 class='home-links'><a href='/reviews/new'>Leave a review</a></h5>
+      	<h5  class='home-links'><a href='/logout'>Logout of Poppy</a></h5>
     </body>
 </html>

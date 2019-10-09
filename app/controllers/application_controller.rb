@@ -15,14 +15,18 @@ class ApplicationController < Sinatra::Base
     if !logged_in
       erb :home
     else
-      redirect 'users/home'
+      posted
     end
   end
 
   get '/users/home' do
     @user = User.find_by(id: session[:user_id])
-    @review = Review.find_by(user_id: @user.id)
-    erb :'users/home'
+    @review = Review.find_by(user_id: session[:user_id])
+    if Review.find_by(user_id: session[:user_id])
+      erb :'/users/home'
+    else
+      redirect '/'
+    end
   end
 
   helpers do
@@ -50,6 +54,14 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    def posted
+      if Review.find_by(user_id: session[:user_id])
+        redirect 'users/home'
+      else
+        redirect '/reviews/new'
+      end
+    end
+    
     def logout
       session.clear
     end

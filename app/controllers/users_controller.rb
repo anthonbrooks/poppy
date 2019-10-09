@@ -7,6 +7,6 @@ class UsersController < ApplicationController
 
   post '/registrations' do
     signup
-    redirect '/users/home'
+    posted
   end
 end

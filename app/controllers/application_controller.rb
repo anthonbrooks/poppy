@@ -56,7 +56,7 @@ class ApplicationController < Sinatra::Base
 
     def posted
       if Review.find_by(user_id: session[:user_id])
-        redirect 'users/home'
+        erb :'users/home'
       else
         redirect '/reviews/new'
       end

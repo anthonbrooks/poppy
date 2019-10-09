@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @fav_character = params[:fav_character]
     @description = params[:description]
     @rating = params[:rating]
-    @review = Review.create(params)
+    @review = current_user.reviews.build(params)
     if @review.save
       redirect "/reviews/#{@review.id}"
     else

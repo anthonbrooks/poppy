@@ -15,7 +15,12 @@ class ReviewsController < ApplicationController
     @fav_character = params[:fav_character]
     @description = params[:description]
     @rating = params[:rating]
-    erb :'reviews/review'
+    @review = Review.create(params)
+    if @review.save
+      redirect "/reviews/#{@review.id}"
+    else
+      redirect '/reviews/new'
+    end
   end
 
   get '/reviews' do
@@ -36,8 +41,13 @@ class ReviewsController < ApplicationController
 
   get '/reviews/:id' do
     @review = Review.find_by(id: params[:id])
+    @title = @review.title
+    @director = @review.director
+    @fav_character = @review.fav_character
+    @description = @review.description
+    @rating = @review.rating
     if @review
-      erb :review
+      erb :"reviews/review"
     else
       redirect '/reviews'
     end

@@ -2,10 +2,10 @@
 
 class UsersController < ApplicationController
   get '/signup' do
-    erb :'registrations/signup'
+    erb :'/registrations/signup'
   end
 
-  post '/registration' do
+  post '/registrations' do
     signup
     redirect '/users/home'
   end

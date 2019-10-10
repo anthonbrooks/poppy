@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Title: <%= @review.title %></h1>
+    <h2>Director: <%= @review.director %></h2>
+    <h3>My favorite character: <%= @review.fav_character %></h3>
+    <h3>Plot: <%= @review.description %></h3>
+    <h3>My rating: <%= @review.rating %>/5</h3>
+    <div id='poster'>
+      <p>Review by: </p><h4><%= @review.user.name %></h4>
+    </div>
+  </body>
+</html>

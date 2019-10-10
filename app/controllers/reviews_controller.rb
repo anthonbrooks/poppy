@@ -9,22 +9,37 @@ class ReviewsController < ApplicationController
     end
   end
 
-  post '/reviews/review' do
+  get '/reviews' do
+    erb :reviews
+  end
+
+  post '/reviews/:id' do
     @title = params[:title]
     @director = params[:director]
     @fav_character = params[:fav_character]
     @description = params[:description]
     @rating = params[:rating]
-    @review = current_user.reviews.build(params)
+    @review = current_user.reviews.build(title: @title, director: @director,\
+                                         fav_character: @fav_character, description: @description,\
+                                         rating: @rating)
     if @review.save
-      redirect "/reviews/#{@review.id}"
+      redirect "/reviews/#{ @review.id }"
     else
       redirect '/reviews/new'
     end
   end
 
-  get '/reviews' do
-    erb :reviews
+  get '/reviews/:id' do
+    @review = Review.find_by(id: params[:id])
+    erb :'/reviews/show'
+  end
+  
+  patch '/articles/:id' do
+    @review = Review.find_by(id: params[:id])
+    @review.update(title: @title, director: @director,\
+                    fav_character: @fav_character, description: @description,\
+                    rating: @rating)
+    redirect "/reviews/#{ @review.id }"
   end
 
   get '/reviews/:id/edit' do
@@ -39,28 +54,10 @@ class ReviewsController < ApplicationController
       end
     end
   end
-
-  get '/reviews/:id' do
-    @review = Review.find_by(id: params[:id])
-    @title = @review.title
-    @director = @review.director
-    @fav_character = @review.fav_character
-    @description = @review.description
-    @rating = @review.rating
-    if @review
-      erb :"reviews/review"
-    else
-      redirect '/reviews'
-    end
-  end
-
-  patch '/articles/:id' do
-    @review = Review.find_by(id: params[:id])
-    @review.update(params[:review])
-    redirect "/reviews/#{ @review.id }"
-  end
-  
+    
   delete '/reviews/:id' do
-    Review.destroy(params[:id])
+    @review = Review.find_by(id: params[:id])
+    @review.destroy(params[:id])
+    redirect '/users/home'
   end
 end

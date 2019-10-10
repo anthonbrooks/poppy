@@ -31,9 +31,9 @@ class ReviewsController < ApplicationController
     if !logged_in
       redirect '/'
     else
-      review = current_user.reviews.find_by(params[:id])
-      if review
-        "An edit post form #{current_user.id} is editing #{review.id}"
+      @review = current_user.reviews.find_by(params[:id])
+      if @review
+        erb :'/reviews/edit'
       else
         redirect '/reviews'
       end
@@ -52,5 +52,15 @@ class ReviewsController < ApplicationController
     else
       redirect '/reviews'
     end
+  end
+
+  patch '/articles/:id' do
+    @review = Review.find_by(id: params[:id])
+    @review.update(params[:review])
+    redirect "/reviews/#{ @review.id }"
+  end
+  
+  delete '/reviews/:id' do
+    Review.destroy(params[:id])
   end
 end

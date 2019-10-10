@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form method='post' action='/reviews/<%= @review.id %>'>
+      <input type='hidden' id='hidden' name='_method' value='patch' />
+      <label for='title'>Title:</label>
+      <input type='text' id='title' name='title' value='<%= @review.title %>' />
+      <br/>
+      <label for='director'>Director:</label>
+      <input type='text' id='director' name='director' value='<%= @review.director %>' />
+      <br/>
+      <label for='fav_character'>Favorite Character:</label>
+      <input type='text' id='fav_character' name='fav_character' value='<%= @review.fav_character %>' />
+      <br/>
+      <label for='description'>Plot:</label>
+      <textarea type='text' id='description' name='plot' placeholder='<%= @review.description %>'></textarea>
+      <br/>
+      <label for='rating'>Rating:</label>
+      <input type='text' id='rating' name='rating' value='<%= @review.rating %>' />
+      <br/>
+      <input type='submit' value='Submit' />
+    </form>
+  </body>
+</html>

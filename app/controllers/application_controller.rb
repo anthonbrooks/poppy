@@ -7,6 +7,7 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
+    set :method_override, true
     enable :sessions
     set :session_secret, 'password_secret'
   end
@@ -22,7 +23,7 @@ class ApplicationController < Sinatra::Base
   get '/users/home' do
     @user = User.find_by(id: session[:user_id])
     @review = Review.find_by(user_id: session[:user_id])
-    if Review.find_by(user_id: session[:user_id])
+    if @user
       erb :'/users/home'
     else
       redirect '/'

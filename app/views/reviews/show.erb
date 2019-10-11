@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <header>
-    <ul>
-      <li><a href='/users/home'>Home</a></li>
-      <li><a href='/reviews/new'>Write a Review</a></li>
+    <ul style='display: flex; justify-content: center;'>
+      <li><h5><a href='/users/home'>Home</a></h5></li>
+      <h5> | </h5>
+      <li><h5><a href='/reviews/new'>Write a Review</a></h5></li>
     </ul>
   <body>
     <h1>Title: <%= @review.title %></h1>

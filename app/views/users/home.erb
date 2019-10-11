@@ -2,8 +2,9 @@
 <html>
     <body>
         <h3>Hi, <%= @user.name %>. What would you like to do? </h3>
-	<h4>View and edit your latest review:</h4>
-	<a href='/reviews/<%= @review.id %>'><%= @review.title %></a>
-	<a href='/reviews/<%= @review.id %>/edit'>edit</a>
+	<h4>Write a new review:</h4>
+	<a href='/reviews/new'>New Review</a>
+	<h5 class='home-links'><a href='/reviews'>View all reviews</a></h5>
+	<h5 class='home-links'><a href='/logout'>Logout</a></h5>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <header>
-    <ul style='display: flex; ; justify-content: center'>
+    <ul style='display: flex; justify-content: center'>
       <li><h5><a href='users/home'>Home</a></h5></li>
       <h5> | </h5>
       <li><h5><a href='reviews/new'>Write a Review</a></h5></li>
@@ -13,5 +13,6 @@
       <li><a href="reviews/<%= review.id %>"><%= review.title %></a></li>
       <% end %>
     </ul>
+    <h5 class='home-links'><a href='/logout'>Logout</a></h5>
   </body>
 </html>

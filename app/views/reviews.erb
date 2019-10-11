@@ -1,5 +1,17 @@
-<ul>
-    <% Review.all.each do |review| %>
-            <li><a href="reviews/<%= review.id %>"><%= review.title %></a></li>
-    <% end %>
-</ul>
+<!DOCTYPE html>
+<html>
+  <header>
+    <ul style='display: flex; ; justify-content: center'>
+      <li><h5><a href='users/home'>Home</a></h5></li>
+      <h5> | </h5>
+      <li><h5><a href='reviews/new'>Write a Review</a></h5></li>
+    </ul>
+  </header>
+  <body>
+    <ul>
+      <% Review.all.each do |review| %>
+      <li><a href="reviews/<%= review.id %>"><%= review.title %></a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>Are you sure you want to delete <%= @review.title %>?</p>
+    <form method='post' action='/reviews/<%= @review.id %>'>
+      <input type='hidden' name='_method' value='DELETE' />
+      <input type='submit' value='Delete' />
+    </form>
+    <a href='/users/home'>Cancel</a>
+  </body>
+</html>

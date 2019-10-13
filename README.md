@@ -9,8 +9,6 @@ clone the git repo to your local machine
 execute this command: 
 
   $ shotgun
-      $ bundle
-
   
 go to the url provided by shotgun (usually localhost:9393 or 127.0.0.1:9393)
 

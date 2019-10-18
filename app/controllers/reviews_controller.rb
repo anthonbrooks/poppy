@@ -17,7 +17,6 @@ class ReviewsController < ApplicationController
 
   post '/reviews/search' do
     @reviews = Review.where('title LIKE ?', "%#{params[:search]}%")
-    #binding.pry
     erb :reviews
   end
   

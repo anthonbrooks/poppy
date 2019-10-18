@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <header>
+  <body>
     <ul style='display: flex; justify-content: center'>
       <li><h5><a href='/users/home'>Home</a></h5></li>
       <h5> | </h5>
       <li><h5><a href='/reviews/new'>Write a Review</a></h5></li>
     </ul>
-  </header>
-  <body>
     <form method='post' action='/reviews/search'>
       <label for='search'>Search reviews</label>
       <input type='text' name='search' />
-      <input type='submit' value='search' />
+      <input type='submit' value='Search' />
     </form>
     <ul>
       <% @reviews.each do |review| %>

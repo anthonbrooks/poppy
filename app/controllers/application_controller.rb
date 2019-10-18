@@ -51,6 +51,7 @@ class ApplicationController < Sinatra::Base
         session[:user_id] = @user.id
       else
         redirect '/'
+        #SINATRA FLASH
         @invalid = 'Please enter valid credentials'
       end
     end

@@ -2,14 +2,19 @@
 <html>
   <header>
     <ul style='display: flex; justify-content: center'>
-      <li><h5><a href='users/home'>Home</a></h5></li>
+      <li><h5><a href='/users/home'>Home</a></h5></li>
       <h5> | </h5>
-      <li><h5><a href='reviews/new'>Write a Review</a></h5></li>
+      <li><h5><a href='/reviews/new'>Write a Review</a></h5></li>
     </ul>
   </header>
   <body>
+    <form method='post' action='/reviews/search'>
+      <label for='search'>Search reviews</label>
+      <input type='text' name='search' />
+      <input type='submit' value='search' />
+    </form>
     <ul>
-      <% Review.all.each do |review| %>
+      <% @reviews.each do |review| %>
       <li><a href="reviews/<%= review.id %>"><%= review.title %></a></li>
       <% end %>
     </ul>

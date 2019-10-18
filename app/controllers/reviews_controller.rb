@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
@@ -10,9 +11,16 @@ class ReviewsController < ApplicationController
   end
 
   get '/reviews' do
+    @reviews = Review.all
     erb :reviews
   end
 
+  post '/reviews/search' do
+    @reviews = Review.where('title LIKE ?', "%#{params[:search]}%")
+    #binding.pry
+    erb :reviews
+  end
+  
   post '/reviews' do
     @review = current_user.reviews.create(params)
     if @review.save
@@ -48,8 +56,12 @@ class ReviewsController < ApplicationController
       @review.update(fav_character: params[:fav_character])
       @review.update(description: params[:description])
       @review.update(rating: params[:rating])
-      @review.save
-      redirect "/reviews/#{ @review.id }"
+      @review.update(params)
+      if @review.save
+        redirect "/reviews/#{ @review.id }"
+      else
+        redirect "/reviews/#{ @review.id }/edit"
+      end
     else
       redirect '/reviews'
     end

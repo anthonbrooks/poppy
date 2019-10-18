@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,19 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_191_007_221_850) do
-  create_table 'reviews', force: :cascade do |t|
-    t.string  'title'
-    t.string  'director'
-    t.string  'fav_character'
-    t.string  'description'
-    t.integer 'rating'
-    t.integer 'user_id'
+ActiveRecord::Schema.define(version: 20191007221850) do
+
+  create_table "reviews", force: :cascade do |t|
+    t.string  "title"
+    t.string  "director"
+    t.string  "fav_character"
+    t.string  "description"
+    t.integer "rating"
+    t.integer "user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'email'
-    t.string 'password_digest'
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
   end
+
 end

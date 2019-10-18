@@ -14,11 +14,6 @@ class ReviewsController < ApplicationController
   end
 
   post '/reviews' do
-    @title = params[:title]
-    @director = params[:director]
-    @fav_character = params[:fav_character]
-    @description = params[:description]
-    @rating = params[:rating]
     @review = current_user.reviews.create(params)
     if @review.save
       redirect "/reviews/#{ @review.id }"
@@ -45,15 +40,19 @@ class ReviewsController < ApplicationController
     end
   end
 
-  patch '/reviews/:id' do
+  patch '/reviews/:id' do 
     @review = Review.find_by_id(params[:id])
-    @review.update(title: params[:title])
-    @review.update(director: params[:director])
-    @review.update(fav_character: params[:fav_character])
-    @review.update(description: params[:description])
-    @review.update(rating: params[:rating])
-    @review.save
-    redirect "/reviews/#{ @review.id }"
+    if @review.user_id == current_user.id
+      @review.update(title: params[:title])
+      @review.update(director: params[:director])
+      @review.update(fav_character: params[:fav_character])
+      @review.update(description: params[:description])
+      @review.update(rating: params[:rating])
+      @review.save
+      redirect "/reviews/#{ @review.id }"
+    else
+      redirect '/reviews'
+    end
   end
 
   post '/reviews/:id' do
